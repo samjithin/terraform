@@ -34,7 +34,7 @@ jobs:
 
     
     - name: Terraform destroy
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/main'
       run: terraform destroy -auto-approve
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
