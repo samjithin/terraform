@@ -1,10 +1,10 @@
 name: 'Terraform CI'
 
 on:
-  pull_request:
+  push:
     branches:
       - master
-    types: [closed]
+  pull_request:
 
 
 jobs:
@@ -34,7 +34,7 @@ jobs:
 
     
     - name: Terraform destroy
-      if: github.event.pull_request.merged == true
+      if: github.ref == 'refs/heads/master'
       run: terraform destroy -auto-approve
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
